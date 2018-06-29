@@ -1,6 +1,9 @@
 import React from 'react'
-export default function House () {
+export default function House (props) {
     return (
-        <div>House</div>
+        <div>
+            {JSON.stringify(props)}
+
+        </div>
     )
 }

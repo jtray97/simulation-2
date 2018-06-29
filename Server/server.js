@@ -11,9 +11,13 @@ app.use(bodyParser.json())
 massive( process.env.CONNECTION_STRING).then(db =>{app.set('db', db)}).catch(err=>console.log(err))
 
 //Controllers
+const ctrl = require('./Controllers/basic_controller')
 
 //Endpoints
-
+app.get('/api/houses',ctrl.read)
+app.post('/api/houses',ctrl.create)
+app.put('/api/houses/:id',ctrl.update)
+app.delete('/api/houses/:id',ctrl.delete)
 
 
 
