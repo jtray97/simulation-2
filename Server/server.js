@@ -8,7 +8,12 @@ require('dotenv').config()
 
 //MiddleWare
 app.use(bodyParser.json())
-massive( process.env.CONNECTION_STRING).then(db =>{app.set('db', db)}).catch(err=>console.log(err))
+massive( process.env.CONNECTION_STRING)
+.then(db =>{
+    console.log('connected to the server')
+    app.set('db', db)
+})
+.catch(err=>console.log(err))
 
 //Controllers
 const ctrl = require('./Controllers/basic_controller')

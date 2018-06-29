@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 class Wizard extends Component {
     constructor() {
@@ -25,21 +26,29 @@ class Wizard extends Component {
         this.setState({ name: val })
     }
 
-    handleAddressChange() {
-
+    handleAddressChange(val) {
+        this.setState({address:val})
     }
-    handleCityChange() {
-
+    handleCityChange(val) {
+        this.setState({city:val})
+        
     }
-    handleStateChange() {
-
+    handleStateChange(val) {
+        this.setState({state:val})
+        
     }
-    handleZipChange() {
+    handleZipChange(val) {
+        this.setState({zip:val})
 
     }
 
     handleCompleteClick() {
-
+        axios.put('/api/houses',
+        {name:this.state.name, 
+            address:this.state.address, 
+            city:this.state.city, 
+            state:this.state.state, 
+            zip:this.state.zip})
     }
 
     handleCancel() {

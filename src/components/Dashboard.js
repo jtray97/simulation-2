@@ -7,15 +7,22 @@ class Dashboard extends Component {
 constructor(){
     super()
     this.state={
-        homes:[]
+        houses:[]
     }
+    this.loadHouses= this.loadHouses.bind(this)
 }
-    componentDidMount(){
+    loadHouses(){
+        
         axios.get('/api/houses').then(houses=>{
+            console.log(houses.data)
             this.setState({
-                homes:this.state.homes.push(houses)
+                houses:[...houses.data]
             })
-        }).catch(err=>console.log(err))
+        })
+
+    }
+    componentDidMount(){
+        this.loadHouses()
     }
     render(){
         return(
@@ -24,8 +31,9 @@ constructor(){
             <Link to='/wizard'>
             <button>Add Property</button>
             </Link>
-            {/* {this.state.houses} */}
-                <House houses={this.state.homes}/>
+            <House houses= {this.state.houses} loadHouses = {this.loadHouses}/>
+            
+                
                 </div>
 
         )

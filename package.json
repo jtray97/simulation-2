@@ -2,7 +2,7 @@
   "name": "simulation-2",
   "version": "0.1.0",
   "private": true,
-  "proxy":"http://locallhost:3009",
+  "proxy":"http://localhost:3009",
   "main":"server/server.js",
   "dependencies": {
     "axios": "^0.18.0",
